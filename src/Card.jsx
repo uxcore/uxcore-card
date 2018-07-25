@@ -64,6 +64,7 @@ class Card extends React.Component {
     const {
       prefixCls, icon, title, tip, extra,
     } = this.props;
+    if (!icon && !title && !tip && !extra) return null;
     return (
       <div className={`${prefixCls}-header`}>
         <div className={`${prefixCls}-title`}>
@@ -75,11 +76,13 @@ class Card extends React.Component {
           <div className={`${prefixCls}-title-text`}>
             {title}
           </div>
-          <div className={`${prefixCls}-title-tip`}>
-            <Tooltip overlay={tip} placement="top" trigger={['hover']} overlayClassName="kuma-tooltip-dark">
-              <Icon usei name="tishi-full" className={`${prefixCls}-title-tip-icon`} />
-            </Tooltip>
-          </div>
+          {tip ? (
+            <div className={`${prefixCls}-title-tip`}>
+              <Tooltip overlay={tip} placement="top" trigger={['hover']} overlayClassName="kuma-tooltip-dark">
+                <Icon usei name="tishi-full" className={`${prefixCls}-title-tip-icon`} />
+              </Tooltip>
+            </div>
+          ) : null}
         </div>
         <div className={`${prefixCls}-extra`}>
           {extra}
