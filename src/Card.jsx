@@ -62,7 +62,7 @@ class Card extends React.Component {
 
   renderHeader() {
     const {
-      prefixCls, icon, title, tip, extra,
+      prefixCls, icon, title, tip, extra, showCollapseIcon,
     } = this.props;
     if (!icon && !title && !tip && !extra) return null;
     return (
@@ -84,10 +84,12 @@ class Card extends React.Component {
             </div>
           ) : null}
         </div>
-        <div className={`${prefixCls}-extra`}>
-          {extra}
-          {this.renderCollapseIcon()}
-        </div>
+        {(extra || showCollapseIcon) ? (
+          <div className={`${prefixCls}-extra`}>
+            {extra}
+            {this.renderCollapseIcon()}
+          </div>
+        ) : null}
       </div>
     );
   }
