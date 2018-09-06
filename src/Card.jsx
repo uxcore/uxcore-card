@@ -73,7 +73,12 @@ class Card extends React.Component {
               {icon}
             </div>
           ) : null}
-          <div className={`${prefixCls}-title-text`}>
+          <div
+            className={classnames(`${prefixCls}-title-text`, {
+              [`${prefixCls}-title-text__has-icon`]: !!icon,
+              [`${prefixCls}-title-text__has-tip`]: !!tip,
+            })}
+          >
             {title}
           </div>
           {tip ? (

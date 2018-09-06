@@ -59,9 +59,18 @@
       color: @dark-alpha-2;
       font-size: 14px;
       font-weight: bold;
-      max-width: calc(100% - 48px);
+      max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
+      &__has-icon {
+        max-width: calc(~"100% - 28px");
+      }
+      &__has-tip {
+        max-width: calc(~"100% - 22px");
+        &.@{__card-prefix-cls}-title-text__has-icon {
+          max-width: calc(~"100% - 50px");
+        }
+      }
     }
     &-tip-icon {
       color: @brand-info;

@@ -21,14 +21,14 @@ class Demo extends React.Component {
     const cardProps = {
       title: 'Title Title Title Title Title',
       tip: '这是一个提示',
-      icon: <Icon usei name="shangchuan" />,
+      // icon: <Icon usei name="shangchuan" />,
       extra: (
         <a>
         自定义操作
         </a>
       ),
       className: 'card-demo',
-      showCollapseIcon: true,
+      // showCollapseIcon: true,
       contentPaddingSize: 'none',
     };
     return (
