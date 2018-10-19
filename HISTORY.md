@@ -3,6 +3,7 @@
 ## 0.1.6
 
 * `CHANGED` new prop `defaultCollapsed`
+* `FIXED` padding jitter when collapsing
 
 ## 0.1.5
 
