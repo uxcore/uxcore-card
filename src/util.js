@@ -3,16 +3,16 @@ import cssAni from 'css-animation';
 /* eslint-disable no-param-reassign */
 const toggleHeightAnim = (node, show, done) => {
   let height;
-  cssAni(node, '__css-animation__', {
+  cssAni(node, '__card__', {
     start() {
       node.style.overflow = 'hidden';
       if (!show) {
         node.style.height = `${node.offsetHeight}px`;
         node.style.opacity = 0;
-        node.style.padding = '0px';
+        // node.style.padding = '0px';
       } else {
         height = node.offsetHeight;
-        node.style.padding = '0px';
+        // node.style.padding = '0px';
         node.style.height = 0;
         node.style.opacity = 1;
       }

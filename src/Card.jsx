@@ -27,6 +27,7 @@ class Card extends React.Component {
     showCollapseIcon: PropTypes.bool,
     onCollapseChange: PropTypes.func,
     contentPaddingSize: PropTypes.oneOf(['middle', 'none']),
+    defaultCollapsed: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -41,12 +42,13 @@ class Card extends React.Component {
     onCollapseChange: () => {
     },
     contentPaddingSize: 'middle',
+    defaultCollapsed: false,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: false,
+      collapsed: props.defaultCollapsed,
     };
   }
 

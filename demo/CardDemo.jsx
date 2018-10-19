@@ -24,17 +24,20 @@ class Demo extends React.Component {
       // icon: <Icon usei name="shangchuan" />,
       extra: (
         <a>
-        自定义操作
+        Action
         </a>
       ),
       className: 'card-demo',
-      // showCollapseIcon: true,
-      contentPaddingSize: 'none',
+      showCollapseIcon: true,
+      // contentPaddingSize: 'none',
+      defaultCollapsed: true,
     };
     return (
       <div>
         <Card {...cardProps}>
-          <div style={{ height: 300 }} />
+          <div style={{ height: 300 }}>
+            一些内容一些内容一些内容一些内容一些内容
+          </div>
         </Card>
       </div>
     );

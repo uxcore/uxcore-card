@@ -80,3 +80,4 @@ Yes please! See the [CONTRIBUTING](https://github.com/uxcore/uxcore/blob/master/
 | showCollapseIcon | Bool | No | false | 显示折叠按钮 |
 | onCollapseChange | func(collapse) | No | noop | 折叠状态发生改变时的回调，参数为是否被折叠 |
 | contentPaddingSize | string | No | 'middle' | 内容区间距，枚举值：middle/none |
+| defaultCollapsed | bool | No | false | 默认是否折叠 |
