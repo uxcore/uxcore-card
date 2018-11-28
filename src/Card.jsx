@@ -42,7 +42,7 @@ class Card extends React.Component {
     onCollapseChange: () => {
     },
     contentPaddingSize: 'middle',
-    defaultCollapsed: false,
+    defaultCollapsed: true,
   };
 
   constructor(props) {
@@ -86,7 +86,7 @@ class Card extends React.Component {
           {tip ? (
             <div className={`${prefixCls}-title-tip`}>
               <Tooltip overlay={tip} placement="top" trigger={['hover']} overlayClassName="kuma-tooltip-dark">
-                <Icon usei name="tishi-full" className={`${prefixCls}-title-tip-icon`} />
+                <Icon usei name="xinxitishicopy" className={`${prefixCls}-title-tip-icon`} />
               </Tooltip>
             </div>
           ) : null}
@@ -112,7 +112,7 @@ class Card extends React.Component {
         usei
         name="bottom"
         className={classnames(`${prefixCls}-collapse-icon`, {
-          [`${prefixCls}-collapse-icon__collapsed`]: !!collapsed,
+          [`${prefixCls}-collapse-icon__collapsed`]: !collapsed,
         })}
         onClick={this.handleCollapseIconClick}
       />
