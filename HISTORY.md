@@ -1,5 +1,9 @@
 # history
 
+## 0.1.7
+* `CHANGED` icon and box style
+* `FIXED` arrow direction is wrong
+
 ## 0.1.6
 
 * `CHANGED` new prop `defaultCollapsed`
