@@ -42,7 +42,7 @@ class Card extends React.Component {
     onCollapseChange: () => {
     },
     contentPaddingSize: 'middle',
-    defaultCollapsed: true,
+    defaultCollapsed: false,
   };
 
   constructor(props) {

@@ -30,7 +30,7 @@ class Demo extends React.Component {
       className: 'card-demo',
       showCollapseIcon: true,
       // contentPaddingSize: 'none',
-      defaultCollapsed: true,
+      defaultCollapsed: false,
     };
     return (
       <div>

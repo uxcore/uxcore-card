@@ -1,4 +1,6 @@
 # history
+## 0.1.8
+* `FIXED` change defaultCollapsed to false
 
 ## 0.1.7
 * `CHANGED` icon and box style
