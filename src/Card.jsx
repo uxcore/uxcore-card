@@ -26,6 +26,7 @@ class Card extends React.Component {
     children: PropTypes.node,
     showCollapseIcon: PropTypes.bool,
     onCollapseChange: PropTypes.func,
+    contentHeight: PropTypes.number,
     contentPaddingSize: PropTypes.oneOf(['middle', 'none']),
     defaultCollapsed: PropTypes.bool,
   };
@@ -41,6 +42,7 @@ class Card extends React.Component {
     showCollapseIcon: false,
     onCollapseChange: () => {
     },
+    contentHeight: undefined,
     contentPaddingSize: 'middle',
     defaultCollapsed: false,
   };
@@ -122,11 +124,19 @@ class Card extends React.Component {
   renderContent() {
     const { collapsed } = this.state;
     if (collapsed) return null;
-    const { prefixCls, children, contentPaddingSize } = this.props;
+    const { prefixCls, children, contentPaddingSize, contentHeight } = this.props;
+
+    const style = {};
+    if (contentHeight) {
+      style.height = contentHeight;
+    }
+
     return (
-      <div className={classnames(`${prefixCls}-content`, {
-        [`${prefixCls}-content-${contentPaddingSize}-padding`]: !!contentPaddingSize,
-      })}
+      <div
+        className={classnames(`${prefixCls}-content`, {
+          [`${prefixCls}-content-${contentPaddingSize}-padding`]: !!contentPaddingSize,
+        })}
+        style={style}
       >
         {children}
       </div>
@@ -134,15 +144,16 @@ class Card extends React.Component {
   }
 
   render() {
-    const { prefixCls, className } = this.props;
+    const { prefixCls, className, contentHeight } = this.props;
+
     return (
       <div className={classnames(prefixCls, className)}>
         {this.renderHeader()}
         <Animate
           component=""
           animation={{
-            enter: (node, done) => { util.toggleHeightAnim(node, true, done); },
-            leave: (node, done) => { util.toggleHeightAnim(node, false, done); },
+            enter: (node, done) => { util.toggleHeightAnim(node, true, contentHeight, done); },
+            leave: (node, done) => { util.toggleHeightAnim(node, false, contentHeight, done); },
           }}
         >
           {this.renderContent()}

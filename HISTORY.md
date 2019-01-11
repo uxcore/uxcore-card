@@ -1,4 +1,9 @@
 # history
+
+## 0.1.9
+
+* `NEW` add prop contentHeight
+
 ## 0.1.8
 * `FIXED` change defaultCollapsed to false
 
