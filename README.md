@@ -79,5 +79,6 @@ Yes please! See the [CONTRIBUTING](https://github.com/uxcore/uxcore/blob/master/
 | children | React Element | No | - | 卡片内容 |
 | showCollapseIcon | Bool | No | false | 显示折叠按钮 |
 | onCollapseChange | func(collapse) | No | noop | 折叠状态发生改变时的回调，参数为是否被折叠 |
+| contentHeight | number | No |  | 内容区高度，用于固定卡片高度的场景，默认为内容区实际渲染高度 |
 | contentPaddingSize | string | No | 'middle' | 内容区间距，枚举值：middle/none |
 | defaultCollapsed | bool | No | false | 默认是否折叠 |
