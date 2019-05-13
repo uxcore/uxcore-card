@@ -138,8 +138,8 @@ class Card extends React.Component {
         ref={(c) => {this.content = c}}
         style={{
           height: collapsed ? 0 : this.height ,
-          paddingTop: collapsed ? 0 : 20,
-          paddingBottom: collapsed ? 0 : 20
+          paddingTop: collapsed ? 0 : 24,
+          paddingBottom: collapsed ? 0 : 24
         }}
       >
         {children}

@@ -1,4 +1,7 @@
 # history
+## 0.1.10
+* `CHANGED` refactor animate method
+* `CHANGED` collapse card content will not remove from the dom
 
 ## 0.1.9
 
