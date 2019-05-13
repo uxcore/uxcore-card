@@ -6,12 +6,11 @@
  * All rights reserved.
  */
 import React from 'react';
+import ReactDom from 'react-dom'
 import PropTypes from 'prop-types';
 import Tooltip from 'uxcore-tooltip';
 import Icon from 'uxcore-icon';
-import Animate from 'uxcore-animate';
 import classnames from 'classnames';
-import util from './util';
 
 class Card extends React.Component {
   static displayName = 'Card';
@@ -52,6 +51,13 @@ class Card extends React.Component {
     this.state = {
       collapsed: props.defaultCollapsed,
     };
+    this.height = props.contentHeight
+  }
+
+  componentDidMount() {
+    if (!this.state.collapsed) {
+      this.height = ReactDom.findDOMNode(this.content).getBoundingClientRect().height
+    }
   }
 
   handleCollapseIconClick = () => {
@@ -123,20 +129,18 @@ class Card extends React.Component {
 
   renderContent() {
     const { collapsed } = this.state;
-    if (collapsed) return null;
-    const { prefixCls, children, contentPaddingSize, contentHeight } = this.props;
-
-    const style = {};
-    if (contentHeight) {
-      style.height = contentHeight;
-    }
-
+    const { prefixCls, children, contentPaddingSize } = this.props;
     return (
       <div
         className={classnames(`${prefixCls}-content`, {
           [`${prefixCls}-content-${contentPaddingSize}-padding`]: !!contentPaddingSize,
         })}
-        style={style}
+        ref={(c) => {this.content = c}}
+        style={{
+          height: collapsed ? 0 : this.height ,
+          paddingTop: collapsed ? 0 : 20,
+          paddingBottom: collapsed ? 0 : 20
+        }}
       >
         {children}
       </div>
@@ -144,20 +148,12 @@ class Card extends React.Component {
   }
 
   render() {
-    const { prefixCls, className, contentHeight } = this.props;
+    const { prefixCls, className } = this.props;
 
     return (
       <div className={classnames(prefixCls, className)}>
         {this.renderHeader()}
-        <Animate
-          component=""
-          animation={{
-            enter: (node, done) => { util.toggleHeightAnim(node, true, contentHeight, done); },
-            leave: (node, done) => { util.toggleHeightAnim(node, false, contentHeight, done); },
-          }}
-        >
-          {this.renderContent()}
-        </Animate>
+        {this.renderContent()}
       </div>
     );
   }
