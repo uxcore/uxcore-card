@@ -35,41 +35,16 @@ class Demo extends React.Component {
     return (
       <div>
         <div style={{ float: 'left', width: '30%' }}>
-          <Card {...cardProps}>
-            <div>
-              <p>高度自适应</p>
+          <Card {...cardProps} keepAlive={true} defaultCollapsed={true}>
+            <div style={{ height: 300 }}>
               一些内容一些内容一些内容一些内容一些内容
             </div>
           </Card>
         </div>
         <div style={{ float: 'left', width: '30%' }}>
-          <Card {...cardProps} contentHeight={300}>
+          <Card {...cardProps} defaultCollapsed={true} keepAlive={false} contentHeight={300}>
             <div>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
-              <p>asdfadadsf</p>
+              高度自适应
             </div>
           </Card>
         </div>

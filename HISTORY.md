@@ -1,4 +1,11 @@
 # history
+## 0.1.12
+* `CHANGED` refactor animate method
+* `NEW` add new prop keepView for collapsed card
+
+## 0.1.11
+revert
+
 ## 0.1.10
 * `CHANGED` refactor animate method
 * `CHANGED` collapse card content will not remove from the dom

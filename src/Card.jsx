@@ -10,7 +10,9 @@ import ReactDom from 'react-dom'
 import PropTypes from 'prop-types';
 import Tooltip from 'uxcore-tooltip';
 import Icon from 'uxcore-icon';
+import Animate from 'uxcore-animate';
 import classnames from 'classnames';
+import util from './util';
 
 class Card extends React.Component {
   static displayName = 'Card';
@@ -28,6 +30,7 @@ class Card extends React.Component {
     contentHeight: PropTypes.number,
     contentPaddingSize: PropTypes.oneOf(['middle', 'none']),
     defaultCollapsed: PropTypes.bool,
+    keepAlive: PropTypes.bool
   };
 
   static defaultProps = {
@@ -44,6 +47,7 @@ class Card extends React.Component {
     contentHeight: undefined,
     contentPaddingSize: 'middle',
     defaultCollapsed: false,
+    keepAlive: false
   };
 
   constructor(props) {
@@ -51,12 +55,16 @@ class Card extends React.Component {
     this.state = {
       collapsed: props.defaultCollapsed,
     };
-    this.height = props.contentHeight
+    if (props.keepAlive) {
+      this.height = props.contentHeight
+    }
   }
 
   componentDidMount() {
-    if (!this.state.collapsed) {
-      this.height = ReactDom.findDOMNode(this.content).getBoundingClientRect().height
+    if (this.props.keepAlive) {
+      if (!this.state.collapsed) {
+        this.height = ReactDom.findDOMNode(this.content).getBoundingClientRect().height
+      }
     }
   }
 
@@ -129,18 +137,36 @@ class Card extends React.Component {
 
   renderContent() {
     const { collapsed } = this.state;
-    const { prefixCls, children, contentPaddingSize } = this.props;
+    const {
+      prefixCls,
+      children,
+      contentPaddingSize,
+      contentHeight,
+      keepAlive
+    } = this.props;
+    let style = {}
+    if (!keepAlive) {
+      if (collapsed ) return null;
+      if (contentHeight) {
+        style = {
+          height: contentHeight
+        };
+      }
+    } else {
+      style = {
+        height: collapsed ? 0 : this.height ,
+        paddingTop: collapsed ? 0 : 24,
+        paddingBottom: collapsed ? 0 : 24
+      }
+    }
+
     return (
       <div
         className={classnames(`${prefixCls}-content`, {
           [`${prefixCls}-content-${contentPaddingSize}-padding`]: !!contentPaddingSize,
         })}
         ref={(c) => {this.content = c}}
-        style={{
-          height: collapsed ? 0 : this.height ,
-          paddingTop: collapsed ? 0 : 24,
-          paddingBottom: collapsed ? 0 : 24
-        }}
+        style={style}
       >
         {children}
       </div>
@@ -148,12 +174,28 @@ class Card extends React.Component {
   }
 
   render() {
-    const { prefixCls, className } = this.props;
+    const { prefixCls, className, contentHeight, keepAlive } = this.props;
 
     return (
       <div className={classnames(prefixCls, className)}>
         {this.renderHeader()}
-        {this.renderContent()}
+        {
+          !keepAlive ?
+            <Animate
+              component=""
+              animation={{
+                enter: (node, done) => {
+                  util.toggleHeightAnim(node, true, contentHeight, done);
+                },
+                leave: (node, done) => {
+                  util.toggleHeightAnim(node, false, contentHeight, done);
+                },
+              }}
+            >
+              {this.renderContent()}
+            </Animate> :
+            this.renderContent()
+        }
       </div>
     );
   }
