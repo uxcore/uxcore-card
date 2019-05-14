@@ -1,7 +1,7 @@
 # history
 ## 0.1.12
 * `CHANGED` refactor animate method
-* `NEW` add new prop keepView for collapsed card
+* `NEW` add new prop keepAlive for collapsed card
 
 ## 0.1.11
 revert
