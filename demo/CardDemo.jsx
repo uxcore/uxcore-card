@@ -14,7 +14,21 @@ class Demo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      list: ['内容一', '内容二', '内容三']
     };
+    setTimeout(() => {
+      this.setState({
+        list: [...this.state.list, '内容四', '内容五', '内容六', '内容七', '内容八', '内容九', '内容十', '内容十一', '内容十二', '内容十三', '内容十四', '内容十五', '内容十六']
+      })
+    }, 5000)
+  }
+  renderOthers() {
+    const { list } = this.state
+    return (
+      list.map((item, index) => {
+        return <p key={index}>{item}</p>
+      })
+    )
   }
 
   render() {
@@ -35,17 +49,21 @@ class Demo extends React.Component {
     return (
       <div>
         <div style={{ float: 'left', width: '30%' }}>
-          <Card {...cardProps}>
-            <div style={{ height: 300 }}>
-              一些内容一些内容一些内容一些内容一些内容
+          <Card {...cardProps} keepAlive={false}>
+            <div>
+              高度自适应
+              {
+                this.renderOthers()
+              }
             </div>
           </Card>
         </div>
         <div style={{ float: 'left', width: '30%' }}>
           <Card {...cardProps} contentHeight={300}>
-            <div>
-              高度自适应
-            </div>
+            <div>一些内容一些内容一些内容一些内容一些内容一些内容一些内容</div>
+            {
+              this.renderOthers()
+            }
           </Card>
         </div>
       </div>

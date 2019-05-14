@@ -60,10 +60,26 @@ class Card extends React.Component {
     }
   }
 
+  getDom() {
+    return ReactDom.findDOMNode(this.content)
+  }
+
   componentDidMount() {
     if (this.props.keepAlive) {
       if (!this.state.collapsed) {
-        this.height = ReactDom.findDOMNode(this.content).getBoundingClientRect().height
+        this.height = this.getDom().getBoundingClientRect().height
+      }
+    }
+  }
+  componentDidUpdate() {
+    if (this.props.keepAlive) {
+      if (!this.state.collapsed) {
+        const dom = this.getDom()
+        dom.style.height = '';
+        setTimeout(() => {
+          this.height = dom.getBoundingClientRect().height
+          dom.style.height = this.height + 'px'
+        }, 200)
       }
     }
   }
