@@ -1,4 +1,7 @@
 # history
+## 0.1.14
+* `NEW` add new prop maxWidthOfTip
+
 ## 0.1.13
 * `CHANGED` refactor animate method
 * `NEW` add new prop keepAlive for collapsed card
