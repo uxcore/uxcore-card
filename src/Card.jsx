@@ -22,6 +22,7 @@ class Card extends React.Component {
     icon: PropTypes.node,
     title: PropTypes.node,
     tip: PropTypes.node,
+    maxWidthOfTip: PropTypes.number,
     extra: PropTypes.node,
     children: PropTypes.node,
     showCollapseIcon: PropTypes.bool,
@@ -37,6 +38,7 @@ class Card extends React.Component {
     icon: undefined,
     title: undefined,
     tip: undefined,
+    maxWidthOfTip: 400,
     extra: undefined,
     children: undefined,
     showCollapseIcon: false,
@@ -66,7 +68,7 @@ class Card extends React.Component {
 
   renderHeader() {
     const {
-      prefixCls, icon, title, tip, extra, showCollapseIcon,
+      prefixCls, icon, title, tip, extra, showCollapseIcon, maxWidthOfTip,
     } = this.props;
     if (!icon && !title && !tip && !extra) return null;
     return (
@@ -87,7 +89,7 @@ class Card extends React.Component {
           </div>
           {tip ? (
             <div className={`${prefixCls}-title-tip`}>
-              <Tooltip overlay={tip} placement="top" trigger={['hover']} overlayClassName="kuma-tooltip-dark">
+              <Tooltip overlayStyle={{ maxWidth: maxWidthOfTip }} overlay={tip} placement="top" trigger={['hover']} overlayClassName="kuma-tooltip-dark">
                 <Icon usei name="xinxitishicopy" className={`${prefixCls}-title-tip-icon`} />
               </Tooltip>
             </div>

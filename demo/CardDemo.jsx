@@ -20,7 +20,7 @@ class Demo extends React.Component {
   render() {
     const cardProps = {
       title: 'Title Title Title Title Title',
-      tip: '这是一个提示',
+      tip: '这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示',
       // icon: <Icon usei name="shangchuan" />,
       extra: (
         <a>
