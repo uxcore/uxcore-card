@@ -75,7 +75,8 @@ Yes please! See the [CONTRIBUTING](https://github.com/uxcore/uxcore/blob/master/
 | icon | React Element | No | - | 头部图标 |
 | title | React Element | No | - | 头部标题 |
 | tip | React Element | No | - | 头部提示 |
-| maxWidthOfTip | Number | No | 400 | 头部提示最大宽度 |
+| overlayStyleOfTip | Object | No | { maxWidth: 400, textAlign: 'left' } | 头部提示样式 |
+| placementOfTip | String | No | 'top' | 头部提示的位置，one of ['left','right','top','bottom', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'] |
 | extra | React Element | No | - | 头部右侧额外区域，通用用于放置动作 |
 | children | React Element | No | - | 卡片内容 |
 | showCollapseIcon | Bool | No | false | 显示折叠按钮 |
