@@ -22,7 +22,8 @@ class Card extends React.Component {
     icon: PropTypes.node,
     title: PropTypes.node,
     tip: PropTypes.node,
-    maxWidthOfTip: PropTypes.number,
+    overlayStyleOfTip: PropTypes.object,
+    placementOfTip: PropTypes.string,
     extra: PropTypes.node,
     children: PropTypes.node,
     showCollapseIcon: PropTypes.bool,
@@ -38,7 +39,8 @@ class Card extends React.Component {
     icon: undefined,
     title: undefined,
     tip: undefined,
-    maxWidthOfTip: 400,
+    overlayStyleOfTip: {},
+    placementOfTip: 'top',
     extra: undefined,
     children: undefined,
     showCollapseIcon: false,
@@ -68,9 +70,24 @@ class Card extends React.Component {
 
   renderHeader() {
     const {
-      prefixCls, icon, title, tip, extra, showCollapseIcon, maxWidthOfTip,
+      prefixCls,
+      icon,
+      title,
+      tip,
+      extra,
+      showCollapseIcon,
+      overlayStyleOfTip,
+      placementOfTip,
     } = this.props;
+
     if (!icon && !title && !tip && !extra) return null;
+
+    const newOverlayStyle = {
+      maxWidth: 400,
+      textAlign: 'left',
+      ...overlayStyleOfTip,
+    };
+
     return (
       <div className={`${prefixCls}-header`}>
         <div className={`${prefixCls}-title`}>
@@ -89,7 +106,13 @@ class Card extends React.Component {
           </div>
           {tip ? (
             <div className={`${prefixCls}-title-tip`}>
-              <Tooltip overlayStyle={{ maxWidth: maxWidthOfTip }} overlay={tip} placement="top" trigger={['hover']} overlayClassName="kuma-tooltip-dark">
+              <Tooltip
+                overlayStyle={newOverlayStyle}
+                overlay={tip}
+                placement={placementOfTip}
+                trigger={['hover']}
+                overlayClassName="kuma-tooltip-dark"
+              >
                 <Icon usei name="xinxitishicopy" className={`${prefixCls}-title-tip-icon`} />
               </Tooltip>
             </div>

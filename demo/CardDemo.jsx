@@ -31,6 +31,10 @@ class Demo extends React.Component {
       showCollapseIcon: true,
       // contentPaddingSize: 'none',
       defaultCollapsed: false,
+      placementOfTip: 'topLeft',
+      overlayStyleOfTip: {
+        maxWidth: 500,
+      },
     };
     return (
       <div>
