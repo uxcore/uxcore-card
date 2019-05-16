@@ -1,4 +1,7 @@
 # history
+## 0.1.15
+* `CHANGED` add new prop overlayStyleOfTip and placementOfTip, remove maxWidthOfTip
+
 ## 0.1.14
 * `NEW` add new prop maxWidthOfTip
 
