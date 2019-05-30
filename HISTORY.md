@@ -1,4 +1,8 @@
 # history
+## 0.1.16
+
+* `FIXED` self-adaption height when inner components updated.
+
 ## 0.1.15
 * `CHANGED` add new prop overlayStyleOfTip and placementOfTip, remove maxWidthOfTip
 
