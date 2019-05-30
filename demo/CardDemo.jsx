@@ -35,7 +35,7 @@ class Demo extends React.Component {
     const cardProps = {
       title: 'Title Title Title Title Title',
       tip: '这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示这是一个提示',
-      // icon: <Icon usei name="shangchuan" />,
+      icon: <Icon usei name="shangchuan" />,
       extra: (
         <a>
         Action
@@ -52,24 +52,20 @@ class Demo extends React.Component {
     };
     return (
       <div>
-        <div style={{ float: 'left', width: '30%' }}>
-          <Card {...cardProps} keepAlive={false}>
-            <div>
-              高度自适应
-              {
-                this.renderOthers()
-              }
-            </div>
-          </Card>
-        </div>
-        <div style={{ float: 'left', width: '30%' }}>
-          <Card {...cardProps} contentHeight={300}>
-            <div>一些内容一些内容一些内容一些内容一些内容一些内容一些内容</div>
+        <Card {...cardProps} keepAlive={true}>
+          <div>
+            高度自适应
             {
               this.renderOthers()
             }
-          </Card>
-        </div>
+          </div>
+        </Card>
+        <Card {...cardProps} contentHeight={300} keepAlive={true}>
+          <div>一些内容一些内容一些内容一些内容一些内容一些内容一些内容</div>
+          {
+            this.renderOthers()
+          }
+        </Card>
       </div>
     );
   }

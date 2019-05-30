@@ -61,6 +61,7 @@ class Card extends React.Component {
     };
     if (props.keepAlive) {
       this.height = props.contentHeight
+      this.maxHeight = props.contentHeight
     }
   }
 
@@ -69,9 +70,23 @@ class Card extends React.Component {
   }
 
   componentDidMount() {
+    const dom = this.getDom();
+    const pfx = ['webkit', 'moz', 'MS', 'o', ''];
+    const prefixedEventListener = (element, type, callback) => {
+      for (var p = 0; p < pfx.length; p++) {
+        if (!pfx[p]) type = type.toLowerCase();
+        element.addEventListener(pfx[p] + type, callback, false);
+      }
+    };
+    prefixedEventListener(dom, 'transitionend' ,function(e){
+      if (dom.style.height !== '0px') {
+        dom.style.height = ''
+      }
+    });
     if (this.props.keepAlive) {
       if (!this.state.collapsed) {
-        this.height = this.getDom().getBoundingClientRect().height
+        this.height = dom.getBoundingClientRect().height
+        dom.style.maxHeight = this.maxHeight + 'px'
       }
     }
   }
@@ -141,9 +156,9 @@ class Card extends React.Component {
                 overlay={tip}
                 placement={placementOfTip}
                 trigger={['hover']}
-                overlayClassName="kuma-tooltip-dark"
+                overlayClassName='kuma-tooltip-dark'
               >
-                <Icon usei name="xinxitishicopy" className={`${prefixCls}-title-tip-icon`} />
+                <Icon usei name='xinxitishicopy' className={`${prefixCls}-title-tip-icon`} />
               </Tooltip>
             </div>
           ) : null}
@@ -167,7 +182,7 @@ class Card extends React.Component {
     return (
       <Icon
         usei
-        name="bottom"
+        name='bottom'
         className={classnames(`${prefixCls}-collapse-icon`, {
           [`${prefixCls}-collapse-icon__collapsed`]: !collapsed,
         })}
@@ -223,7 +238,7 @@ class Card extends React.Component {
         {
           !keepAlive ?
             <Animate
-              component=""
+              component=''
               animation={{
                 enter: (node, done) => {
                   util.toggleHeightAnim(node, true, contentHeight, done);
