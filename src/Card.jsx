@@ -70,20 +70,20 @@ class Card extends React.Component {
   }
 
   componentDidMount() {
-    const dom = this.getDom();
-    const pfx = ['webkit', 'moz', 'MS', 'o', ''];
-    const prefixedEventListener = (element, type, callback) => {
-      for (var p = 0; p < pfx.length; p++) {
-        if (!pfx[p]) type = type.toLowerCase();
-        element.addEventListener(pfx[p] + type, callback, false);
-      }
-    };
-    prefixedEventListener(dom, 'transitionend' ,function(e){
-      if (dom.style.height !== '0px') {
-        dom.style.height = ''
-      }
-    });
     if (this.props.keepAlive) {
+      const dom = this.getDom();
+      const pfx = ['webkit', 'moz', 'MS', 'o', ''];
+      const prefixedEventListener = (element, type, callback) => {
+        for (var p = 0; p < pfx.length; p++) {
+          if (!pfx[p]) type = type.toLowerCase();
+          element.addEventListener(pfx[p] + type, callback, false);
+        }
+      };
+      prefixedEventListener(dom, 'transitionend' ,function(e){
+        if (dom.style.height !== '0px') {
+          dom.style.height = ''
+        }
+      });
       if (!this.state.collapsed) {
         this.height = dom.getBoundingClientRect().height
         dom.style.maxHeight = this.maxHeight + 'px'
