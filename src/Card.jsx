@@ -25,6 +25,7 @@ class Card extends React.Component {
     tip: PropTypes.node,
     overlayStyleOfTip: PropTypes.object,
     placementOfTip: PropTypes.string,
+    tipIconTheme: PropTypes.string,
     extra: PropTypes.node,
     children: PropTypes.node,
     showCollapseIcon: PropTypes.bool,
@@ -41,6 +42,7 @@ class Card extends React.Component {
     icon: undefined,
     title: undefined,
     tip: undefined,
+    tipIconTheme: 'light',
     overlayStyleOfTip: {},
     placementOfTip: 'top',
     extra: undefined,
@@ -123,6 +125,7 @@ class Card extends React.Component {
       showCollapseIcon,
       overlayStyleOfTip,
       placementOfTip,
+      tipIconTheme
     } = this.props;
 
     if (!icon && !title && !tip && !extra) return null;
@@ -156,9 +159,9 @@ class Card extends React.Component {
                 overlay={tip}
                 placement={placementOfTip}
                 trigger={['hover']}
-                overlayClassName='kuma-tooltip-dark'
+                overlayClassName={`${tipIconTheme === 'dark' ? '' : 'kuma-tooltip-dark'}`}
               >
-                <Icon usei name='xinxitishicopy' className={`${prefixCls}-title-tip-icon`} />
+                <Icon usei name={`${tipIconTheme === 'dark' ? 'tishi-full' : 'xinxitishicopy'}`} className={`${prefixCls}-title-tip-icon`} />
               </Tooltip>
             </div>
           ) : null}

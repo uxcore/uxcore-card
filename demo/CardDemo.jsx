@@ -42,6 +42,7 @@ class Demo extends React.Component {
         </a>
       ),
       className: 'card-demo',
+      // tipIconTheme: 'dark',
       showCollapseIcon: true,
       // contentPaddingSize: 'none',
       defaultCollapsed: false,
