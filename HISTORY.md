@@ -1,4 +1,7 @@
 # history
+## 0.1.19
+* `FIXED` add style/index.js
+
 ## 0.1.16
 
 * `FIXED` self-adaption height when inner components updated.
